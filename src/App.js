@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from 'styled-components';
+import usePersistedState from './utils/usePersistedState';
+
+import GlobalStyle from './styles/global';
+import main from './styles/themes/main';
+import blackFriday from './styles/themes/blackFriday';
+import Header from './components/Header';
+import MainContent from './components/MainContent';
 
 function App() {
+  const [theme, setTheme] = usePersistedState('theme', main);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === 'main' ? blackFriday : main)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Header />
+        <MainContent />
+    </ThemeProvider>
   );
 }
 
