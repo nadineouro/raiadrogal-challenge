@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content, Image, Media, ButtonContainer, Button } from './styles';
+import { Container, Content, Image, Media, Button } from './styles';
 
 const Card = ({ title, text, img, color, button, onClickButton, expanded }) => (
   <Container>
