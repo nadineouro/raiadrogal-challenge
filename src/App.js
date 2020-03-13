@@ -4,22 +4,18 @@ import usePersistedState from './utils/usePersistedState';
 
 import GlobalStyle from './styles/global';
 import main from './styles/themes/main';
-import blackFriday from './styles/themes/blackFriday';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
+import Footer from './components/Footer';
 
 function App() {
-  const [theme, setTheme] = usePersistedState('theme', main);
-
-  const toggleTheme = () => {
-    setTheme(theme.title === 'main' ? blackFriday : main)
-  }
-
+  const [theme] = usePersistedState('theme', main);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Header />
-        <MainContent />
+      <MainContent />
+      <Footer />
     </ThemeProvider>
   );
 }

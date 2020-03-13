@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../styles/shared/colors';
-import { smallScreen, mediumScreen, largeSreen } from '../../styles/shared/breakpoints';
+import { smallScreen, mediumScreen, largeScreen } from '../../styles/shared/breakpoints';
 
 export const Container = styled.div`
   flex: 1;
@@ -20,15 +20,14 @@ export const Title = styled.div`
   padding: 5% 10% 2%;
   ${smallScreen} { padding-top: 10%; font-size: 20px; }
   ${mediumScreen} { font-size: 40px; }
-  ${largeSreen} { font-size: 50px; }
+  ${largeScreen} { font-size: 50px; }
 `;
 
 export const SubTitle = styled.div`
   color: ${colors.gray};
-  padding: 3% 20%;
+  padding: 3% 15% 0; 
   span { border-radius: 100%; display: inline-block; }
   ${smallScreen} { font-size: 10px; span { width: 5px; height: 5px; } }
   ${mediumScreen} { font-size: 20px; span { width: 10px; height: 10px; } }
-  ${largeSreen} { font-size: 30px; span { width: 15px; height: 15px; } }
-  
+  ${largeScreen} { font-size: 30px; span { width: 15px; height: 15px; } }
 `;

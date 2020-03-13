@@ -1,5 +1,9 @@
+import colors from '../shared/colors'
+
 export default {
   title: 'blackFriday',
-  background: '#000',
-  text: '#fff'
+  background: colors.black,
+  text: colors.white,
+  card: colors.darkGray,
+  cardText: colors.white
 };

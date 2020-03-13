@@ -4,9 +4,10 @@ const colors = {
   salmon: '#FE9481',
   yellow: '#FCDA92',
   purple: '#9C8CB9',
-  lightGray: '#E0E0E0', 
+  black: '#000',
   white: '#fff',
-  dark: '333'
+  lightGray: '#E0E0E0',
+  darkGray: '#4c4f56'
 };
 
 export default colors;

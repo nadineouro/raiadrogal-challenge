@@ -1,48 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import desktop from '../../resources/images/desktop-responsive-design.png';
 import mobile from '../../resources/images/mobile-responsive-design.png';
 import tablets from '../../resources/images/tablets-responsive-design.png';
 import Card from '../Card';
 import colors from '../../styles/shared/colors';
 import { Container } from './styles';
+import usePersistedState from '../../utils/usePersistedState';
+import main from '../../styles/themes/main';
+import blackFriday from '../../styles/themes/blackFriday';
+import Popup from '../Popup';
 
 const CardList = () => {
+  const [theme, setTheme] = usePersistedState('theme', main);
+  const toggleTheme = () => setTheme(theme.title === 'main' ? blackFriday : main)
+
+  const [isPopupOpened, setPopupStatus] = useState(false)
+  const expandCard = () => console.log('aa')
+
   const cards = [
     {
-      id: 'desktop', 
+      key: 'desktop', 
       title: 'Site Responsivo DESKTOP', 
-      text: ['Quando pressionado o botão ', <strong>Leia mais...</strong>, ' o restante da informação deverá aparecer em scroll down'], 
+      text: ['Quando pressionado o botão ', <strong>Leia mais...</strong>, ' o restante da informação deverá aparecer em scroll down.'], 
       img: desktop,
-      color: colors.salmon
+      color: colors.salmon,
+      button: 'Leia mais...',
+      onClickButton: () => expandCard()
     },
     {
-      id: 'tablet', 
+      key: 'tablet', 
       title: 'Site Responsivo TABLET', 
-      text: ['Quando pressionado o botão ', <strong>Leia mais...</strong>, ' informação deverá aparecer completa em um popup na tela.'], 
+      text: ['Quando pressionado o botão ', <strong>Leia mais...</strong>, ' a informação deverá aparecer completa em um popup na tela.'], 
       img: tablets,
-      color: colors.yellow
+      color: colors.yellow,
+      button: 'Leia mais...',
+      onClickButton: () => setPopupStatus(!isPopupOpened)
     },
     {
-      id: 'mobile', 
+      key: 'mobile', 
       title: 'Site Responsivo MOBILE', 
       text: ['Quando pressionado o botão ', <strong>alterar tema</strong>, ' modifique o tema do site para blackfriday a seu gosto.'],
       img: mobile,
-      color: colors.purple
+      color: colors.purple,
+      button: 'Alterar tema',
+      onClickButton: toggleTheme
     },
   ]
   return (
-    <Container>
-      {console.log(cards)}
-      {cards.map(card => 
-        <Card 
-          key={card.id} 
-          title={card.title} 
-          text={card.text} 
-          img={card.img}
-          color={card.color}
-        />
-      )}
-    </Container>
+    <>
+      <Popup 
+        open={isPopupOpened} 
+        onClose={() => setPopupStatus(false)} 
+        text={cards[1].text}
+      />
+      <Container>
+        {cards.map(card => 
+          <Card 
+            key={card.key} 
+            title={card.title} 
+            text={card.text} 
+            img={card.img}
+            color={card.color}
+            button={card.button}
+            onClickButton={card.onClickButton}
+          />
+        )}
+      </Container>
+    </>
   );
 }
 export default CardList;
