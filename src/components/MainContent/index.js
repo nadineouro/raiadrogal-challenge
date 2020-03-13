@@ -24,10 +24,10 @@ const MainContent = () => {
       Já as cores são: <br />
       {
         colorList.map(c => (
-          <div key={c.name}>
-            <span style={{ background: c.color }} />
+          <>
+            <span key={c.name} style={{ background: c.color }} />
             {c.color}, 
-          </div>
+          </>
         ))
       }
       </SubTitle>

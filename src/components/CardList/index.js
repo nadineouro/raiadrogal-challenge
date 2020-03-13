@@ -15,7 +15,7 @@ const CardList = () => {
   const toggleTheme = () => setTheme(theme.title === 'main' ? blackFriday : main)
 
   const [isPopupOpened, setPopupStatus] = useState(false)
-  const expandCard = () => console.log('aa')
+  const [isCardExpanded, setCardExpandad] = useState(false)
 
   const cards = [
     {
@@ -25,7 +25,8 @@ const CardList = () => {
       img: desktop,
       color: colors.salmon,
       button: 'Leia mais...',
-      onClickButton: () => expandCard()
+      onClickButton: () => setCardExpandad(!isCardExpanded),
+      expanded: isCardExpanded
     },
     {
       key: 'tablet', 
@@ -63,6 +64,7 @@ const CardList = () => {
             color={card.color}
             button={card.button}
             onClickButton={card.onClickButton}
+            expanded={card.expanded}
           />
         )}
       </Container>

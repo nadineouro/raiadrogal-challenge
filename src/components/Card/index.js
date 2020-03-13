@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Content, Image, Media, ButtonContainer, Button } from './styles';
 
-const Card = ({ title, text, img, color, button, onClickButton }) => (
+const Card = ({ title, text, img, color, button, onClickButton, expanded }) => (
   <Container>
     <Media color={color}>
       <Image src={img} />
@@ -9,9 +9,8 @@ const Card = ({ title, text, img, color, button, onClickButton }) => (
     </Media>
     <Content>
       {text}
-      <ButtonContainer>
-        <Button color={color} onClick={onClickButton}>{button}</Button>
-      </ButtonContainer>
+      {expanded && <Content>Texto extra aqui</Content>}
+      <Button color={color} onClick={onClickButton}>{button}</Button>
     </Content>
   </Container>
 );

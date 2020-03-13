@@ -7,8 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 300px;
-  margin: 2%;
-  background-color:blue;
+  margin: 2%;  
 `;
 
 export const Media = styled.div`
@@ -35,10 +34,6 @@ export const Content = styled.div`
   text-align: left;
   padding: 1%;
   letter-spacing: -0.01em;  
-`;
-
-export const ButtonContainer = styled.div`
-  background-color: blue;
 `;
 
 export const Button = styled.button`
